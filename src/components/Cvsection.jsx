@@ -164,4 +164,58 @@ const CVSection = () => {
                     transition={{ delay: index * 0.1 }}
                     className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg"
                   >
-                    <div className="flex flex-col md:flex-row md:items-center justify-between
+                    <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                      <div>
+                        <h3 className="text-xl font-bold text-gray-800 dark:text-white">
+                          {edu.degree}
+                        </h3>
+                        <p className="text-gray-600 dark:text-gray-400">
+                          {edu.institution}
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400 mt-2 md:mt-0">
+                        <FiCalendar />
+                        <span>{edu.period}</span>
+                      </div>
+                    </div>
+                    <div className="inline-block px-4 py-2 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 rounded-lg">
+                      {edu.grade}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            )}
+
+            {activeTab === 'certifications' && (
+              <div className="space-y-6">
+                {certifications.map((cert, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg flex items-center gap-4"
+                  >
+                    <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white flex-shrink-0">
+                      <FiAward size={24} />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-lg font-bold text-gray-800 dark:text-white">
+                        {cert.name}
+                      </h3>
+                      <p className="text-gray-600 dark:text-gray-400">
+                        {cert.issuer} • {cert.year}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            )}
+          </motion.div>
+        </AnimatePresence>
+      </div>
+    </section>
+  );
+};
+
+export default CVSection;
